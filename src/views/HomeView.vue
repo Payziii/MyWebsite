@@ -5,106 +5,59 @@
     <title>Payziii - Главная</title>
   </head>
   <div class="about">
-    <h1 align="center">Привет! Меня зовут Михаил</h1>
-    <h3 align="center">Ниже ссылки на соц.сети, а также проекты, которыми я занимаюсь</h3>
+    <h1 class="page-title">Привет, я Payziii</h1>
+    <h2 class="aka"><img class="aka-img" src="../assets/aka.svg" /> Михаил</h2>
+    <h2 class="page-desc">
+      Я разрабатываю ботов на JavaScript, создаю игры и полезные инструменты
+    </h2>
+
     <div class="btn-group">
       <a target="_blank" href="https://discord.com/users/439079453650321409">
-        <button class="button">Discord</button>
+        <button>Discord</button>
       </a>
       <a target="_blank" href="https://t.me/payziii">
-        <button class="button">Telegram</button>
+        <button>Telegram</button>
       </a>
       <a target="_blank" href="https://github.com/Payziii">
-        <button class="button">GitHub</button>
-      </a>
-      <a href="/projects">
-        <button class="button">Проекты</button>
+        <button>GitHub</button>
       </a>
     </div>
   </div>
+  <div class="projects">
+    <h1 class="h1-projects">Мои проекты</h1>
+    <p class="p">Здесь вы найдёте краткие описания моих последних работ</p>
+    <div class="projects-list">
+      <div class="project" style="--border-color: #43c968; --width: 370px; --heigth: 335px">
+        <p class="project-title" style="--size: 36px">PayziBot</p>
+        <p class="project-description">Простой Discord бот с кучей команд, играми и нейросетью</p>
+        <a target="_blank" href="https://payzibot.ru">
+          <button class="project-btn" style="--bcolor: #dddddd; --color: #000000">На сайт</button>
+        </a>
+      </div>
+
+      <div class="project" style="--border-color: #252525; --width: 370px; --heigth: 320px">
+        <p class="project-title" style="--size: 30px">Check Spelling Bot</p>
+        <p class="project-description">Бот в Telegram для проверки текста на наличие ошибок</p>
+        <a target="_blank" href="https://github.com/Payziii/CheckSpellingBot">
+          <button class="project-btn" style="--bcolor: #151515; --color: #dddddd">
+            Исходный код
+          </button>
+        </a>
+      </div>
+
+      <div class="project" style="--border-color: #fee75c; --width: 370px; --heigth: 290px">
+        <p class="project-title" style="--size: 36px">WeatherBot</p>
+        <p class="project-description">Бот в Telegram для просмотра погоды</p>
+        <a target="_blank" href="https://github.com/Payziii/WeatherBot">
+          <button class="project-btn" style="--bcolor: #151515; --color: #dddddd">
+            Исходный код
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <p class="footer">
+    © Payziii, задизайнено
+    <a target="_blank" href="https://orzxiety.ru">Orzxiety</a>
+  </p>
 </template>
-
-<style>
-.about {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-h1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: var(--main-color-text);
-}
-
-h3 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
-  margin-bottom: 1em;
-}
-
-.row {
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 10px;
-}
-
-.column {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  float: left;
-  width: 50%;
-  flex: 50%;
-}
-
-.row:after {
-  margin-left: 10px;
-  content: '';
-  display: table;
-  clear: both;
-}
-
-.social {
-  text-align: center;
-  text-decoration: none;
-  color: var(--social-color-text);
-}
-
-.social:hover {
-  text-decoration: underline;
-}
-
-.projects:hover {
-  text-decoration: underline;
-}
-
-.btn-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-group .button {
-  background-color: #181818;
-  border: 2px solid #cf1b54;
-  border-radius: 10px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.btn-group .button:not(:last-child) {
-  border-right: none;
-}
-
-.btn-group .button:hover {
-  background-color: #cf1b54;
-}
-</style>
