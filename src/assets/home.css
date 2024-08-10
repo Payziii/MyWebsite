@@ -2,6 +2,8 @@
 
 :root {
   --project-background: #252525;
+  --project-bcolor: #151515;
+  --project-color: #dddddd;
 }
 
 body {
@@ -126,10 +128,10 @@ body {
 
 .project-btn {
   margin-bottom: 20px;
-  background-color: var(--bcolor);
+  background-color: var(--project-bcolor);
   border-radius: 12px;
-  border-color: var(--bcolor);
-  color: var(--color);
+  border-color: var(--project-bcolor);
+  color: var(--project-color);
   width: 280px;
   height: 60px;
   font-family: 'Montserrat', sans-serif;

@@ -31,7 +31,9 @@
         <p class="project-title" style="--size: 36px">PayziBot</p>
         <p class="project-description">Простой Discord бот с кучей команд, играми и нейросетью</p>
         <a target="_blank" href="https://payzibot.ru">
-          <div class="project-btn" style="--bcolor: #dddddd; --color: #000000">На сайт</div>
+          <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
+            На сайт
+          </div>
         </a>
       </div>
 
@@ -39,7 +41,7 @@
         <p class="project-title" style="--size: 30px">Check Spelling Bot</p>
         <p class="project-description">Бот в Telegram для проверки текста на наличие ошибок</p>
         <a target="_blank" href="https://github.com/Payziii/CheckSpellingBot">
-          <div class="project-btn" style="--bcolor: #151515; --color: #dddddd">Исходный код</div>
+          <div class="project-btn">Исходный код</div>
         </a>
       </div>
 
@@ -47,7 +49,7 @@
         <p class="project-title" style="--size: 36px">WeatherBot</p>
         <p class="project-description">Бот в Telegram для просмотра погоды</p>
         <a target="_blank" href="https://github.com/Payziii/WeatherBot">
-          <div class="project-btn" style="--bcolor: #151515; --color: #dddddd">Исходный код</div>
+          <div class="project-btn">Исходный код</div>
         </a>
       </div>
     </div>
