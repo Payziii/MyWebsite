@@ -54,7 +54,11 @@ body {
   align-items: center;
 }
 
-.btn-group button {
+.btn-group a {
+  padding: 3px;
+}
+
+.btn-group .button {
   margin-right: 10px;
   background-color: #202020;
   border-radius: 12px;
@@ -135,7 +139,7 @@ body {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  line-height: 22px;
+  line-height: 28px;
   white-space: nowrap;
 }
 
@@ -167,7 +171,7 @@ body {
   font-size: 20px;
   color: #404040;
   text-align: left;
-  margin-left: 1px;
+  margin-left: 4px;
 }
 
 @media (max-width: 1234px) and (min-width: 780px) {
@@ -200,7 +204,7 @@ body {
     font-size: 33px;
   }
 
-  .btn-group button {
+  .btn-group .button {
     width: 196px;
     height: 42px;
     font-size: 19px;
@@ -234,7 +238,7 @@ body {
     font-size: 16px;
   }
 
-  .btn-group button {
+  .btn-group .button {
     width: 98px;
     height: 21px;
     font-size: 9px;
@@ -257,7 +261,7 @@ body {
   }
 }
 
-@media (max-width: 410px) {
+@media (max-width: 430px) {
   .about {
     padding: 20px 50px 0 25px;
   }
@@ -275,7 +279,7 @@ body {
     width: 137px;
     height: 29px;
     font-size: 13px;
-    line-height: 1px;
+    line-height: 13px;
   }
 
   .project {

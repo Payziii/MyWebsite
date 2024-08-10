@@ -13,13 +13,13 @@
 
     <div class="btn-group">
       <a target="_blank" href="https://discord.com/users/439079453650321409">
-        <button>Discord</button>
+        <div class="button">Discord</div>
       </a>
       <a target="_blank" href="https://t.me/payziii">
-        <button>Telegram</button>
+        <div class="button">Telegram</div>
       </a>
       <a target="_blank" href="https://github.com/Payziii">
-        <button>GitHub</button>
+        <div class="button">Github</div>
       </a>
     </div>
   </div>
@@ -31,7 +31,7 @@
         <p class="project-title" style="--size: 36px">PayziBot</p>
         <p class="project-description">Простой Discord бот с кучей команд, играми и нейросетью</p>
         <a target="_blank" href="https://payzibot.ru">
-          <button class="project-btn" style="--bcolor: #dddddd; --color: #000000">На сайт</button>
+          <div class="project-btn" style="--bcolor: #dddddd; --color: #000000">На сайт</div>
         </a>
       </div>
 
@@ -39,9 +39,7 @@
         <p class="project-title" style="--size: 30px">Check Spelling Bot</p>
         <p class="project-description">Бот в Telegram для проверки текста на наличие ошибок</p>
         <a target="_blank" href="https://github.com/Payziii/CheckSpellingBot">
-          <button class="project-btn" style="--bcolor: #151515; --color: #dddddd">
-            Исходный код
-          </button>
+          <div class="project-btn" style="--bcolor: #151515; --color: #dddddd">Исходный код</div>
         </a>
       </div>
 
@@ -49,9 +47,7 @@
         <p class="project-title" style="--size: 36px">WeatherBot</p>
         <p class="project-description">Бот в Telegram для просмотра погоды</p>
         <a target="_blank" href="https://github.com/Payziii/WeatherBot">
-          <button class="project-btn" style="--bcolor: #151515; --color: #dddddd">
-            Исходный код
-          </button>
+          <div class="project-btn" style="--bcolor: #151515; --color: #dddddd">Исходный код</div>
         </a>
       </div>
     </div>
