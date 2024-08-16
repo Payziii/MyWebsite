@@ -52,6 +52,16 @@
           <div class="project-btn">Исходный код</div>
         </a>
       </div>
+
+      <div class="project" style="--border-color: #252525; --width: 370px; --heigth: 320px">
+        <p class="project-title" style="--size: 36px">FiftyTools</p>
+        <p class="project-description">Сборник полезных инструментов в Telegram</p>
+        <a target="_blank" href="https://t.me/FiftyToolsBot/app">
+          <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
+            Открыть
+          </div>
+        </a>
+      </div>
     </div>
   </div>
   <p class="footer">

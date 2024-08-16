@@ -9,7 +9,7 @@
     <h2 class="page-desc">Увы, но страница не найдена</h2>
     <div class="btn-group">
       <a href="/">
-        <button>На главную</button>
+        <div class="button">На главную</div>
       </a>
     </div>
   </div>
