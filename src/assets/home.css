@@ -150,7 +150,7 @@ body {
   flex-direction: column;
   display: flex;
   justify-content: center;
-  width: var(--width);
+  width: 370px;
   height: var(--heigth);
   background: var(--project-background);
   border: 8px solid var(--border-color);

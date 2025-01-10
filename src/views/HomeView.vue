@@ -27,7 +27,8 @@
     <h1 class="h1-projects">Мои проекты</h1>
     <p class="p">Здесь вы найдёте краткие описания моих последних работ</p>
     <div class="projects-list">
-      <div class="project" style="--border-color: #43c968; --width: 370px; --heigth: 335px">
+
+      <div class="project" style="--border-color: #43c968; --heigth: 335px">
         <p class="project-title" style="--size: 36px">PayziBot</p>
         <p class="project-description">Простой Discord бот с кучей команд, играми и нейросетью</p>
         <a target="_blank" href="https://payzibot.ru">
@@ -37,7 +38,7 @@
         </a>
       </div>
 
-      <div class="project" style="--border-color: #252525; --width: 370px; --heigth: 320px">
+      <div class="project" style="--border-color: #252525; --heigth: 320px">
         <p class="project-title" style="--size: 30px">Check Spelling Bot</p>
         <p class="project-description">Бот в Telegram для проверки текста на наличие ошибок</p>
         <a target="_blank" href="https://github.com/Payziii/CheckSpellingBot">
@@ -45,7 +46,7 @@
         </a>
       </div>
 
-      <div class="project" style="--border-color: #fee75c; --width: 370px; --heigth: 290px">
+      <div class="project" style="--border-color: #fee75c; --heigth: 290px">
         <p class="project-title" style="--size: 36px">WeatherBot</p>
         <p class="project-description">Бот в Telegram для просмотра погоды</p>
         <a target="_blank" href="https://github.com/Payziii/WeatherBot">
@@ -53,7 +54,7 @@
         </a>
       </div>
 
-      <div class="project" style="--border-color: #252525; --width: 370px; --heigth: 320px">
+      <div class="project" style="--border-color: #252525; --heigth: 320px">
         <p class="project-title" style="--size: 36px">FiftyTools</p>
         <p class="project-description">Сборник полезных инструментов в Telegram</p>
         <a target="_blank" href="https://t.me/FiftyToolsBot/app">
@@ -62,6 +63,17 @@
           </div>
         </a>
       </div>
+
+      <div class="project" style="--border-color: #4823a9; --heigth: 310px">
+        <p class="project-title" style="--size: 36px">FiftyChat</p>
+        <p class="project-description">Бесплатный чат с ИИ</p>
+        <a target="_blank" href="https://chat.fifty.su">
+          <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
+            Открыть
+          </div>
+        </a>
+      </div>
+
     </div>
   </div>
   <p class="footer">
