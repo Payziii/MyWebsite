@@ -64,7 +64,7 @@
         </a>
       </div>
 
-      <div class="project" style="--border-color: #4823a9; --heigth: 310px">
+      <div class="project" style="--border-color: #4823a9; --heigth: 280px">
         <p class="project-title" style="--size: 36px">FiftyChat</p>
         <p class="project-description">Бесплатный чат с ИИ</p>
         <a target="_blank" href="https://chat.fifty.su">
