@@ -150,7 +150,7 @@ body {
   flex-direction: column;
   display: flex;
   justify-content: center;
-  width: var(--width);
+  width: 370px;
   height: var(--heigth);
   background: var(--project-background);
   border: 8px solid var(--border-color);
@@ -297,4 +297,19 @@ body {
   .footer a {
     font-size: 12px;
   }
+}
+
+.scroll-down {
+  width: 79%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  margin-bottom: -40px;
+  opacity: 0.7;
+}
+
+.scroll-down .material-symbols-outlined {
+    font-size: 56px;
+    font-weight: 700;
 }
