@@ -20,6 +20,14 @@ export default {
     weather: {
       desc: 'Telegram bot to view the weather',
       button: 'Source code'
+    },
+    fiftytools: {
+      desc: 'Collection of useful tools in Telegram',
+      button: 'Open'
+    },
+    fiftychat: {
+      desc: 'Free chat with AI',
+      button: 'Open'
     }
   },
   notfound: {

@@ -68,20 +68,20 @@
 
       <div class="project" style="--border-color: #252525; --heigth: 320px">
         <p class="project-title" style="--size: 36px">FiftyTools</p>
-        <p class="project-description">Сборник полезных инструментов в Telegram</p>
+        <p class="project-description">{{ $t('projects.fiftytools.desc') }}</p>
         <a target="_blank" href="https://t.me/FiftyToolsBot/app">
           <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
-            Открыть
+            {{ $t('projects.fiftytools.button') }}
           </div>
         </a>
       </div>
 
       <div class="project" style="--border-color: #4823a9; --heigth: 280px">
         <p class="project-title" style="--size: 36px">FiftyChat</p>
-        <p class="project-description">Бесплатный чат с ИИ</p>
+        <p class="project-description">{{ $t('projects.fiftychat.desc') }}</p>
         <a target="_blank" href="https://chat.fifty.su">
           <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
-            Открыть
+            {{ $t('projects.fiftychat.button') }}
           </div>
         </a>
       </div>
