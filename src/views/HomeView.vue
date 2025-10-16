@@ -8,7 +8,7 @@
   <div class="basic">
     <div class="nickname">
       <img src="/payziii.jpg" class="avatar" />
-      <h1>{{ $t('basic.hello') }} <span style="font-weight: 700; color: var(--green)">Payziii</span></h1>
+      <h1>{{ $t('basic.hello') }} <span class="payziii">Payziii</span></h1>
     </div>
     <h2>{{ $t('basic.description_1') }}<br />{{ $t('basic.description_2') }}</h2>
     <div class="btns">
@@ -40,6 +40,12 @@
   width: 100%;
   height: 50%;
   padding: 50px;
+
+  .payziii {
+    font-weight: 700;
+    color: var(--green);
+    text-shadow: 0 0 50px rgba(60, 255, 0, 1);
+  }
 
   .nickname {
     display: flex;
