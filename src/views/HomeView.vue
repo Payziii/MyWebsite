@@ -1,95 +1,103 @@
 <script setup></script>
 
 <template>
+
   <head>
     <title>Payziii - {{ $t('home.head') }}</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_double_arrow_down" />
   </head>
-  <div class="about">
-    <h1 class="page-title">{{ $t('home.title') }}</h1>
-    <h2 class="aka"><img class="aka-img" src="../assets/aka.svg" /> {{ $t('home.aka') }}</h2>
-    <h2 class="page-desc">
-      {{ $t('home.desc') }}
-    </h2>
-
-    <div class="btn-group">
-      <a target="_blank" href="https://discord.com/users/439079453650321409">
-        <div class="button">Discord</div>
-      </a>
-      <a target="_blank" href="https://t.me/payziii">
-        <div class="button">Telegram</div>
-      </a>
-      <a target="_blank" href="https://github.com/Payziii">
-        <div class="button">Github</div>
-      </a>
+  <div class="basic">
+    <div class="nickname">
+      <img src="/payziii.jpg" class="avatar" />
+      <h1>Привет, я <span style="font-weight: 700; color: var(--green)">Payziii</span></h1>
     </div>
-    <div class="scroll-down">
-        <span class="material-symbols-outlined">
-          keyboard_double_arrow_down
-        </span>
-        <span class="material-symbols-outlined">
-          keyboard_double_arrow_down
-        </span>
-        <span class="material-symbols-outlined">
-          keyboard_double_arrow_down
-        </span>
+    <h2>FullStack разработчик из России. Занимаюсь разработкой сайтов, Telegram и Discord ботов и всяких остальных
+      утилит.<br />
+      Зовут меня Михаил, сейчас мне 17 лет.</h2>
+    <div class="btns">
+        <a class="btn" href="https://github.com/Payziii" target="_blank">
+          <img src="/logos/github.png" />
+          <p>GitHub</p>
+        </a>
+        <a class="btn" href="https://wakatime.com/@Payziii" target="_blank">
+          <img src="/logos/wakatime.png" />
+          <p>WakaTime</p>
+        </a>
+        <a class="btn" href="https://t.me/Payziii" target="_blank">
+          <img src="/logos/tg.png" />
+          <p>Telegram</p>
+        </a>
+        <a class="btn" href="https://t.me/Payzick" target="_blank">
+          <img src="/logos/tg.png" />
+          <p>Канал</p>
+        </a>
     </div>
   </div>
-  <div class="projects">
-    <h1 class="h1-projects">{{ $t('projects.title') }}</h1>
-    <p class="p">{{ $t('projects.desc') }}</p>
-    <div class="projects-list">
-
-      <div class="project" style="--border-color: #43c968; --heigth: 335px">
-        <p class="project-title" style="--size: 36px">PayziBot</p>
-        <p class="project-description">{{ $t('projects.payzibot.desc') }}</p>
-        <a target="_blank" href="https://payzibot.ru">
-          <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
-            {{ $t('projects.payzibot.button') }}
-          </div>
-        </a>
-      </div>
-
-      <div class="project" style="--border-color: #252525; --heigth: 320px">
-        <p class="project-title" style="--size: 30px">Check Spelling Bot</p>
-        <p class="project-description">{{ $t('projects.csb.desc') }}</p>
-        <a target="_blank" href="https://github.com/Payziii/CheckSpellingBot">
-          <div class="project-btn">{{ $t('projects.csb.button') }}</div>
-        </a>
-      </div>
-
-      <div class="project" style="--border-color: #fee75c; --heigth: 290px">
-        <p class="project-title" style="--size: 36px">WeatherBot</p>
-        <p class="project-description">{{ $t('projects.weather.desc') }}</p>
-        <a target="_blank" href="https://github.com/Payziii/WeatherBot">
-          <div class="project-btn">{{ $t('projects.weather.button') }}</div>
-        </a>
-      </div>
-
-      <div class="project" style="--border-color: #252525; --heigth: 320px">
-        <p class="project-title" style="--size: 36px">FiftyTools</p>
-        <p class="project-description">{{ $t('projects.fiftytools.desc') }}</p>
-        <a target="_blank" href="https://t.me/FiftyToolsBot/app">
-          <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
-            {{ $t('projects.fiftytools.button') }}
-          </div>
-        </a>
-      </div>
-
-      <div class="project" style="--border-color: #4823a9; --heigth: 280px">
-        <p class="project-title" style="--size: 36px">FiftyChat</p>
-        <p class="project-description">{{ $t('projects.fiftychat.desc') }}</p>
-        <a target="_blank" href="https://chat.fifty.su">
-          <div class="project-btn" style="--project-bcolor: #dddddd; --project-color: #000000">
-            {{ $t('projects.fiftychat.button') }}
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </div>
-  <p class="footer">
-    © Payziii, {{ $t('home.designed') }}
-    <a target="_blank" href="https://orzxiety.ru">Orzxiety</a>
-  </p>
 </template>
+
+<style scoped>
+.basic {
+  margin-top: 100px;
+  border-radius: 24px;
+  border: 5px solid var(--border);
+  width: 100%;
+  height: 50%;
+  padding: 50px;
+
+  .nickname {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+      .btn {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding-left: 12px;
+        padding-right: 12px;
+        gap: 10px;
+        border-radius: 12px;
+        border: 2px solid var(--border);
+        color: var(--white);
+        transition: all 0.3s ease;
+      }
+
+      .btn img {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+
+      .btn p {
+        line-height: 0;
+        font-size: 1.5rem;
+      }
+
+      .btn:hover {
+        scale: 1.1;
+      }
+  }
+}
+</style>

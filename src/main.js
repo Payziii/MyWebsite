@@ -1,5 +1,4 @@
 import './assets/main.css'
-import './assets/home.css'
 
 import ru from './locales/ru.js'
 import en from './locales/en.js'
