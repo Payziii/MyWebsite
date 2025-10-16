@@ -3,16 +3,14 @@
 <template>
 
   <head>
-    <title>Payziii - {{ $t('home.head') }}</title>
+    <title>Payziii - {{ $t('title.home') }}</title>
   </head>
   <div class="basic">
     <div class="nickname">
       <img src="/payziii.jpg" class="avatar" />
-      <h1>Привет, я <span style="font-weight: 700; color: var(--green)">Payziii</span></h1>
+      <h1>{{ $t('basic.hello') }} <span style="font-weight: 700; color: var(--green)">Payziii</span></h1>
     </div>
-    <h2>FullStack разработчик из России. Занимаюсь разработкой сайтов, Telegram и Discord ботов и всяких остальных
-      утилит.<br />
-      Зовут меня Михаил, сейчас мне 17 лет.</h2>
+    <h2>{{ $t('basic.description_1') }}<br />{{ $t('basic.description_2') }}</h2>
     <div class="btns">
         <a class="btn" href="https://github.com/Payziii" target="_blank">
           <img src="/logos/github.png" />
@@ -28,7 +26,7 @@
         </a>
         <a class="btn" href="https://t.me/Payzick" target="_blank">
           <img src="/logos/tg.png" />
-          <p>Канал</p>
+          <p>{{ $t('basic.channel') }}</p>
         </a>
     </div>
   </div>
