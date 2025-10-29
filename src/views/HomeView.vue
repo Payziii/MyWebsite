@@ -1,4 +1,27 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue'
+import weather from '../functions/weather.js'
+
+const wea = ref({})
+const currIcon = ref('https://api.fifty.su/weatherIcons/cloud-snow.svg')
+
+function getWeather(city) {
+  weather.forecast(city).then((data) => {
+    wea.value = data
+
+    weather.icon(data.current.condition.code, data.current.is_day).then((icon) => {
+      currIcon.value = "https://api.fifty.su/weatherIcons/" + icon.icon
+      console.log(currIcon.value)
+    })
+
+    return data
+  })
+}
+
+onMounted(() => {
+  getWeather('Екатеринбург');
+})
+</script>
 
 <template>
 
@@ -12,22 +35,31 @@
     </div>
     <h2>{{ $t('basic.description_1') }}<br />{{ $t('basic.description_2') }}</h2>
     <div class="btns">
-        <a class="btn" href="https://github.com/Payziii" target="_blank">
-          <img src="/logos/github.png" />
-          <p>GitHub</p>
-        </a>
-        <a class="btn" href="https://wakatime.com/@Payziii" target="_blank">
-          <img src="/logos/wakatime.png" />
-          <p>WakaTime</p>
-        </a>
-        <a class="btn" href="https://t.me/Payziii" target="_blank">
-          <img src="/logos/tg.png" />
-          <p>Telegram</p>
-        </a>
-        <a class="btn" href="https://t.me/Payzick" target="_blank">
-          <img src="/logos/tg.png" />
-          <p>{{ $t('basic.channel') }}</p>
-        </a>
+      <a class="btn" href="https://github.com/Payziii" target="_blank">
+        <img src="/logos/github.png" />
+        <p>GitHub</p>
+      </a>
+      <a class="btn" href="https://wakatime.com/@Payziii" target="_blank">
+        <img src="/logos/wakatime.png" />
+        <p>WakaTime</p>
+      </a>
+      <a class="btn" href="https://t.me/Payziii" target="_blank">
+        <img src="/logos/tg.png" />
+        <p>Telegram</p>
+      </a>
+      <a class="btn" href="https://t.me/Payzick" target="_blank">
+        <img src="/logos/tg.png" />
+        <p>{{ $t('basic.channel') }}</p>
+      </a>
+    </div>
+  </div>
+  <div class="subcards">
+    <div class="card">
+      <img :src="currIcon" />
+      <div class="text-content">
+        <h1>{{ wea?.current?.temp_c }} °C</h1>
+        <p>{{ wea?.current?.condition?.text }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +72,7 @@
   width: 100%;
   height: 50%;
   padding: 50px;
+  margin-bottom: 50px;
 
   .payziii {
     font-weight: 700;
@@ -76,32 +109,82 @@
     flex-direction: row;
     gap: 24px;
 
-      .btn {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        padding-left: 12px;
-        padding-right: 12px;
-        gap: 10px;
-        border-radius: 12px;
-        border: 2px solid var(--border);
-        color: var(--white);
-        transition: all 0.3s ease;
-      }
+    .btn {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      padding-left: 12px;
+      padding-right: 12px;
+      gap: 10px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      color: var(--white);
+      transition: all 0.3s ease;
+    }
 
-      .btn img {
-        width: 1.8rem;
-        height: 1.8rem;
-      }
+    .btn img {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
 
-      .btn p {
-        line-height: 0;
-        font-size: 1.5rem;
-      }
+    .btn p {
+      line-height: 0;
+      font-size: 1.5rem;
+    }
 
-      .btn:hover {
-        scale: 1.1;
-      }
+    .btn:hover {
+      scale: 1.1;
+    }
+  }
+}
+
+.subcards {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  .card {
+    padding: 20px;
+    border-radius: 24px;
+    border: 5px solid var(--border);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 5px 30px;
+
+    img {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .text-content h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .text-content p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 </style>
