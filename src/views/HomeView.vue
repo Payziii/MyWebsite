@@ -1,9 +1,27 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import weather from '../functions/weather.js'
 
 const wea = ref({})
 const currIcon = ref('https://api.fifty.su/weatherIcons/cloud-snow.svg')
+const time = ref('23:18')
+let timeInterval;
+
+function getCurrentTimeUTC5() {
+  const now = new Date();
+  
+  const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const utc5Time = new Date(utcTime + (5 * 3600000));
+  
+  const hours = String(utc5Time.getHours()).padStart(2, '0');
+  const minutes = String(utc5Time.getMinutes()).padStart(2, '0');
+  
+  return `${hours}:${minutes}`;
+}
+
+function updateTime() {
+  time.value = getCurrentTimeUTC5();
+}
 
 function getWeather(city) {
   weather.forecast(city).then((data) => {
@@ -20,6 +38,16 @@ function getWeather(city) {
 
 onMounted(() => {
   getWeather('Екатеринбург');
+  
+  updateTime();
+  
+  timeInterval = setInterval(updateTime, 10000);
+})
+
+onUnmounted(() => {
+  if (timeInterval) {
+    clearInterval(timeInterval);
+  }
 })
 </script>
 
@@ -54,6 +82,20 @@ onMounted(() => {
     </div>
   </div>
   <div class="subcards">
+    <div class="card">
+      <img :src="currIcon" />
+      <div class="text-content">
+        <h1>{{ wea?.current?.temp_c }} °C</h1>
+        <p>{{ wea?.current?.condition?.text }}</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/logos/clock.png" />
+      <div class="text-content">
+        <h1>{{ time }}</h1>
+        <p>Локальное время UTC+5</p>
+      </div>
+    </div>
     <div class="card">
       <img :src="currIcon" />
       <div class="text-content">
@@ -140,13 +182,15 @@ onMounted(() => {
 
 .subcards {
   display: flex;
+  width: 100%;
   align-items: center;
   flex-direction: row;
+  justify-content: space-between;
 
   .card {
     padding: 20px;
-    border-radius: 24px;
-    border: 5px solid var(--border);
+    border-radius: 12px;
+    border: 3px solid var(--border);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
