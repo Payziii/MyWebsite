@@ -10,13 +10,13 @@ let timeInterval;
 
 function getCurrentTimeUTC5() {
   const now = new Date();
-  
+
   const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
   const utc5Time = new Date(utcTime + (5 * 3600000));
-  
+
   const hours = String(utc5Time.getHours()).padStart(2, '0');
   const minutes = String(utc5Time.getMinutes()).padStart(2, '0');
-  
+
   return `${hours}:${minutes}`;
 }
 
@@ -48,9 +48,9 @@ function getWaka() {
 onMounted(() => {
   getWeather('Екатеринбург');
   getWaka();
-  
+
   updateTime();
-  
+
   timeInterval = setInterval(updateTime, 10000);
 })
 
@@ -113,6 +113,10 @@ onUnmounted(() => {
         <p>Проведено за кодингом</p>
       </div>
     </div>
+  </div>
+  <div class="scroll">
+    <img src="/logos/scroll.png" />
+    <p>Пролистай вниз</p>
   </div>
 </template>
 
@@ -239,6 +243,29 @@ onUnmounted(() => {
       overflow: hidden;
       text-overflow: ellipsis;
     }
+  }
+}
+
+.scroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding-left: 12px;
+  padding-right: 12px;
+  gap: 10px;
+  color: var(--white);
+  margin-top: 70px;
+
+  img {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  p {
+    line-height: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
   }
 }
 </style>
