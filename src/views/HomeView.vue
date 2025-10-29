@@ -1,10 +1,11 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import weather from '../functions/weather.js'
+import api from '../functions/api.js'
 
 const wea = ref({})
 const currIcon = ref('https://api.fifty.su/weatherIcons/cloud-snow.svg')
 const time = ref('23:18')
+const waka = ref('150')
 let timeInterval;
 
 function getCurrentTimeUTC5() {
@@ -24,10 +25,10 @@ function updateTime() {
 }
 
 function getWeather(city) {
-  weather.forecast(city).then((data) => {
+  api.forecast(city).then((data) => {
     wea.value = data
 
-    weather.icon(data.current.condition.code, data.current.is_day).then((icon) => {
+    api.icon(data.current.condition.code, data.current.is_day).then((icon) => {
       currIcon.value = "https://api.fifty.su/weatherIcons/" + icon.icon
       console.log(currIcon.value)
     })
@@ -36,8 +37,17 @@ function getWeather(city) {
   })
 }
 
+function getWaka() {
+  api.waka().then((data) => {
+    waka.value = data.hours
+
+    return data
+  })
+}
+
 onMounted(() => {
   getWeather('Екатеринбург');
+  getWaka();
   
   updateTime();
   
@@ -97,10 +107,10 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="card">
-      <img :src="currIcon" />
+      <img src="/logos/coding.png" />
       <div class="text-content">
-        <h1>{{ wea?.current?.temp_c }} °C</h1>
-        <p>{{ wea?.current?.condition?.text }}</p>
+        <h1>{{ waka }} часов</h1>
+        <p>Проведено за кодингом</p>
       </div>
     </div>
   </div>

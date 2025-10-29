@@ -22,7 +22,20 @@ async function icon(code, is_day) {
   return data
 }
 
+async function waka(code, is_day) {
+  const response = await fetch(
+    `https://api.fifty.su/wakatime/my_hours`,
+    {
+      method: 'GET'
+    }
+  )
+  const data = await response.json()
+
+  return data
+}
+
 export default {
   forecast,
-  icon
+  icon,
+  waka
 }
