@@ -103,20 +103,20 @@ onUnmounted(() => {
       <img src="/logos/clock.png" />
       <div class="text-content">
         <h1>{{ time }}</h1>
-        <p>Локальное время UTC+5</p>
+        <p>{{ $t('subcards.time') }}</p>
       </div>
     </div>
     <div class="card">
       <img src="/logos/coding.png" />
       <div class="text-content">
-        <h1>{{ waka }} часов</h1>
-        <p>Проведено за кодингом</p>
+        <h1>{{ waka }} {{ $t('subcards.hours') }}</h1>
+        <p>{{ $t('subcards.coding') }}</p>
       </div>
     </div>
   </div>
   <div class="scroll">
     <img src="/logos/scroll.png" />
-    <p>Пролистай вниз</p>
+    <p>{{ $t('scroll') }}</p>
   </div>
 </template>
 
