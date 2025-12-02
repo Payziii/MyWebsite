@@ -118,6 +118,39 @@ onUnmounted(() => {
     <img src="/logos/scroll.png" />
     <p>{{ $t('scroll') }}</p>
   </div>
+  <div class="big-cards">
+    <div class="skills">
+      <div class="block">
+        <p>Frontend</p>
+        <div class="images">
+          <img src="/logos/skills/vue.png"/>
+          <img src="/logos/skills/js.png"/>
+          <img src="/logos/skills/html.png"/>
+          <img src="/logos/skills/css.png"/>
+          <img src="/logos/skills/vite.png"/>
+        </div>
+      </div>
+      <div class="block">
+        <p>Backend</p>
+        <div class="images">
+          <img src="/logos/skills/node.png"/>
+          <img src="/logos/skills/nginx.png"/>
+          <img src="/logos/skills/cs.png"/>
+          <img src="/logos/skills/cpp.png"/>
+          <img src="/logos/skills/express.png"/>
+        </div>
+      </div>
+      <div class="block">
+        <p>Other</p>
+        <div class="images">
+          <img src="/logos/skills/python.png"/>
+          <img src="/logos/skills/mongo.png"/>
+          <img src="/logos/skills/mysql.png"/>
+          <img src="/logos/skills/djs.png"/>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -266,6 +299,47 @@ onUnmounted(() => {
     line-height: 0;
     font-size: 1.8rem;
     font-weight: 500;
+  }
+}
+
+.big-cards {
+  display: flex;
+  flex-direction: row;
+
+  .skills {
+    margin-top: 50px;
+    border-radius: 24px;
+    border: 5px solid var(--border);
+    width: 35%;
+    padding: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+
+    p {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-top: -10px;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .images {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      img {
+        transition: all .3s ease;
+      }
+      
+      img:hover {
+        scale: 1.1;
+      }
+    }
+
+    .block:not(:first-child) {
+      margin-top: 50px;
+    }
   }
 }
 </style>
