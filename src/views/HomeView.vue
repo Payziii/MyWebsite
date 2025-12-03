@@ -150,6 +150,9 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
+    <div class="projects">
+      <img src="/logos/projects/"/>
+    </div>
   </div>
 </template>
 
@@ -341,5 +344,26 @@ onUnmounted(() => {
       margin-top: 50px;
     }
   }
-}
+
+    .projects {
+      margin-top: 50px;
+      border-radius: 24px;
+      border: 5px solid var(--border);
+      width: 35%;
+      padding: 50px;
+      margin-bottom: 50px;
+  
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  
+      img {
+        transition: all .3s ease;
+      }
+  
+      img:hover {
+        scale: 1.1;
+      }
+    }
+    }
 </style>
