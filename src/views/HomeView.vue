@@ -123,35 +123,62 @@ onUnmounted(() => {
       <div class="block">
         <p>Frontend</p>
         <div class="images">
-          <img src="/logos/skills/vue.png"/>
-          <img src="/logos/skills/js.png"/>
-          <img src="/logos/skills/html.png"/>
-          <img src="/logos/skills/css.png"/>
-          <img src="/logos/skills/vite.png"/>
+          <img src="/logos/skills/vue.png" />
+          <img src="/logos/skills/js.png" />
+          <img src="/logos/skills/html.png" />
+          <img src="/logos/skills/css.png" />
+          <img src="/logos/skills/vite.png" />
         </div>
       </div>
       <div class="block">
         <p>Backend</p>
         <div class="images">
-          <img src="/logos/skills/node.png"/>
-          <img src="/logos/skills/nginx.png"/>
-          <img src="/logos/skills/cs.png"/>
-          <img src="/logos/skills/cpp.png"/>
-          <img src="/logos/skills/express.png"/>
+          <img src="/logos/skills/node.png" />
+          <img src="/logos/skills/nginx.png" />
+          <img src="/logos/skills/cs.png" />
+          <img src="/logos/skills/cpp.png" />
+          <img src="/logos/skills/express.png" />
         </div>
       </div>
       <div class="block">
         <p>Other</p>
         <div class="images">
-          <img src="/logos/skills/python.png"/>
-          <img src="/logos/skills/mongo.png"/>
-          <img src="/logos/skills/mysql.png"/>
-          <img src="/logos/skills/djs.png"/>
+          <img src="/logos/skills/python.png" />
+          <img src="/logos/skills/mongo.png" />
+          <img src="/logos/skills/mysql.png" />
+          <img src="/logos/skills/djs.png" />
         </div>
       </div>
     </div>
     <div class="projects">
-      <img src="/logos/projects/"/>
+      <div class="project">
+        <img src="/logos/projects/payzibot.png" />
+        <p>PayziBot</p>
+      </div>
+      <div class="project">
+        <img src="/logos/projects/fiftytools.png" />
+        <p>FiftyTools</p>
+      </div>
+      <div class="project">
+        <img src="/logos/projects/pepeguess.png" />
+        <p>PepeGuess</p>
+      </div>
+      <div class="project">
+        <img src="/logos/projects/fiftychat.png" />
+        <p>FiftyChat</p>
+      </div>
+      <div class="project">
+        <img src="/logos/projects/fiftyapi.png" />
+        <p>FiftyAPI</p>
+      </div>
+      <div class="project">
+        <img src="/logos/projects/softshelf.png" />
+        <p>SoftShelf</p>
+      </div>
+      <div class="project">
+        <img src="/logos/projects/fallingcube.png" />
+        <p>Falling Cube</p>
+      </div>
     </div>
   </div>
 </template>
@@ -308,6 +335,7 @@ onUnmounted(() => {
 .big-cards {
   display: flex;
   flex-direction: row;
+  gap: 5%;
 
   .skills {
     margin-top: 50px;
@@ -354,14 +382,21 @@ onUnmounted(() => {
       margin-bottom: 50px;
   
       display: flex;
+      flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-between;
+      align-content: flex-start;
   
-      img {
+      .project {
         transition: all .3s ease;
+
+        p {
+          margin-top: -10px;
+          font-weight: 500;
+        }
       }
   
-      img:hover {
+      .project:hover {
         scale: 1.1;
       }
     }
