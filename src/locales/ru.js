@@ -13,5 +13,8 @@ export default {
     hours: 'часов',
     coding: 'Проведено за кодингом'
   },
-  scroll: 'Пролистай вниз'
+  scroll: 'Пролистай вниз',
+  bigcards: {
+    all: 'Подробнее'
+  }
 }

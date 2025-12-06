@@ -13,5 +13,8 @@ export default {
     hours: 'hours',
     coding: 'Spent on coding'
   },
-  scroll: 'Scroll down'
+  scroll: 'Scroll down',
+  bigcards: {
+    all: 'More'
+  }
 }

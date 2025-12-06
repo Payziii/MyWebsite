@@ -151,7 +151,8 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="projects">
-      <div class="project">
+      <div class="pr-list">
+        <div class="project">
         <img src="/logos/projects/payzibot.png" />
         <p>PayziBot</p>
       </div>
@@ -178,6 +179,10 @@ onUnmounted(() => {
       <div class="project">
         <img src="/logos/projects/fallingcube.png" />
         <p>Falling Cube</p>
+      </div>
+      </div>
+      <div class="all">
+        {{ $t('bigcards.all') }}
       </div>
     </div>
   </div>
@@ -362,7 +367,7 @@ onUnmounted(() => {
       img {
         transition: all .3s ease;
       }
-      
+
       img:hover {
         scale: 1.1;
       }
@@ -373,32 +378,49 @@ onUnmounted(() => {
     }
   }
 
-    .projects {
-      margin-top: 50px;
-      border-radius: 24px;
-      border: 5px solid var(--border);
-      width: 35%;
-      padding: 50px;
-      margin-bottom: 50px;
-  
+  .projects {
+    margin-top: 50px;
+    border-radius: 24px;
+    border: 5px solid var(--border);
+    width: 35%;
+    padding: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+
+    .pr-list {
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-between;
       align-content: flex-start;
-  
-      .project {
-        transition: all .3s ease;
+    }
 
-        p {
-          margin-top: -10px;
-          font-weight: 500;
-        }
-      }
-  
-      .project:hover {
-        scale: 1.1;
+    .project {
+      transition: all .3s ease;
+
+      p {
+        margin-top: -10px;
+        font-weight: 500;
       }
     }
+
+    .project:hover {
+      scale: 1.1;
     }
+
+    .all {
+      align-self: flex-end;
+      margin-top: auto;
+      text-align: center;
+      width: 60%;
+      padding-top: 5px;
+      padding-bottom: 10px;
+      margin: auto auto 0;
+
+      border: 2px solid var(--border);
+      border-radius: 14px;
+    }
+  }
+}
 </style>
