@@ -64,7 +64,7 @@ onUnmounted(() => {
 <template>
 
   <head>
-    <title>Payziii - {{ $t('title.home') }}</title>
+    <title>{{ $t('title.home') }} — Payziii</title>
   </head>
   <div class="basic">
     <div class="nickname">
