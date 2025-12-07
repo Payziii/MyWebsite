@@ -1,11 +1,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import api from '../functions/api.js'
 
 const wea = ref({})
 const currIcon = ref('https://api.fifty.su/weatherIcons/cloud-snow.svg')
 const time = ref('23:18')
 const waka = ref('150')
+const { locale } = useI18n()
 let timeInterval;
 
 function getCurrentTimeUTC5() {
@@ -25,7 +27,7 @@ function updateTime() {
 }
 
 function getWeather(city) {
-  api.forecast(city).then((data) => {
+  api.forecast(city, locale.value).then((data) => {
     wea.value = data
 
     api.icon(data.current.condition.code, data.current.is_day).then((icon) => {

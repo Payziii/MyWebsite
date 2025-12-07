@@ -9,7 +9,9 @@ import App from './App.vue'
 import router from './router'
 
 const i18n = createI18n({
-  locale: navigator.language,
+  legacy: false,          
+  globalInjection: true,
+  locale: navigator.language.split('-')[0],
   fallbackLocale: 'ru',
   messages: {
     ru: ru,

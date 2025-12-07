@@ -1,6 +1,7 @@
-async function forecast(city) {
+async function forecast(city, lang = 'ru') {
+  console.log('Запрос погоды:', city, lang);
   const response = await fetch(
-    `https://api.fifty.su/weather?city=${encodeURIComponent(city)}`,
+    `/api/weather?city=${encodeURIComponent(city)}&lang=${lang}`,
     {
       method: 'GET'
     }
@@ -12,7 +13,7 @@ async function forecast(city) {
 
 async function icon(code, is_day) {
   const response = await fetch(
-    `https://api.fifty.su/weather/icon?code=${code}&is_day=${is_day}`,
+    `/api/weather/icon?code=${code}&is_day=${is_day}`,
     {
       method: 'GET'
     }
@@ -24,7 +25,7 @@ async function icon(code, is_day) {
 
 async function waka(code, is_day) {
   const response = await fetch(
-    `https://api.fifty.su/wakatime/my_hours`,
+    `/api/wakatime/my_hours`,
     {
       method: 'GET'
     }
