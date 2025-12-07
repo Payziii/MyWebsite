@@ -1,6 +1,7 @@
 export default {
   title: {
-    home: 'Главная'
+    home: 'Главная',
+    projects: 'Проекты'
   },
   basic: {
     hello: 'Привет, я',

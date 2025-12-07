@@ -1,6 +1,7 @@
 export default {
   title: {
-    home: 'General'
+    home: 'General',
+    projects: 'Projects'
   },
   basic: {
     hello: 'Hi, I\'m ',
