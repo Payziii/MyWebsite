@@ -48,14 +48,32 @@ onMounted(() => {
   transition: opacity 0.5s ease-out;
 
   h1 {
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--red);
-    text-shadow: 0 0 50px var(--red);
+    text-shadow: 0 0 50px #ff0000;
   }
 
   p {
+    font-size: 1.3rem;
     margin-top: -20px;
     font-weight: 500;
+  }
+}
+
+@media (max-width: 768px) {
+  .notfound {
+    width: 80%;
+    padding: 20px;
+    border: 3px solid var(--border);
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 }
 </style>

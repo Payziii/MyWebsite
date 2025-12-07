@@ -269,6 +269,7 @@ onUnmounted(() => {
   width: 100%;
   align-items: center;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   .card {
@@ -424,5 +425,119 @@ onUnmounted(() => {
       border-radius: 14px;
     }
   }
+}
+
+@media (max-width: 768px) {
+  .basic {
+      margin-top: 10px;
+    width: 85%;
+    padding: 20px;
+    border: 3px solid var(--border);
+    margin-bottom: 20px;
+
+    .nickname {
+    gap: 20px;
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  h2 {
+    font-size: 0.9rem;
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .btn {
+      padding-left: 6px;
+      padding-right: 6px;
+      gap: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .btn img {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .btn p {
+      line-height: 0;
+      font-size: 0.9rem;
+    }
+  }
+  }
+
+  .subcards {
+    gap: 12px;
+
+  .card {
+    min-width: 92%;
+    padding: 10px;
+    border: 1.5px solid var(--border);
+    gap: 5px 15px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .text-content h1 {
+      font-size: 1.5rem;
+    }
+
+    .text-content p {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.scroll {
+  margin-top: 40px;
+
+  img {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+.big-cards {
+  flex-wrap: wrap;
+
+  .skills {
+    border: 3px solid var(--border);
+    width: 85%;
+    padding: 20px;
+    margin-bottom: 0px;
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .projects {
+    border: 3px solid var(--border);
+    width: 85%;
+    padding: 20px;
+    margin-bottom: 0px;
+
+    .all {
+      border: 1px solid var(--border);
+    }
+  }
+}
 }
 </style>
