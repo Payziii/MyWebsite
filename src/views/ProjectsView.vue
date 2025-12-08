@@ -21,7 +21,7 @@ const projects = ref([
 
 <template>
   <head>
-    <title>Projects — Payziii</title>
+    <title>{{ $t('title.projects') }} — Payziii</title>
   </head>
   
   <div class="plist">
