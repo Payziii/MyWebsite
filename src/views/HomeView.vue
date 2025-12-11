@@ -1,7 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import api from '../functions/api.js'
+
+const router = useRouter()
 
 const wea = ref({})
 const currIcon = ref('https://api.fifty.su/weatherIcons/cloud-snow.svg')
@@ -45,6 +48,10 @@ function getWaka() {
 
     return data
   })
+}
+
+function goToProjects() {
+  router.push('/projects')
 }
 
 onMounted(() => {
@@ -183,7 +190,7 @@ onUnmounted(() => {
         <p>Falling Cube</p>
       </div>
       </div>
-      <div class="all">
+      <div class="all" @click="goToProjects">
         {{ $t('bigcards.all') }}
       </div>
     </div>
@@ -420,6 +427,7 @@ onUnmounted(() => {
       padding-top: 5px;
       padding-bottom: 10px;
       margin: auto auto 0;
+      cursor: pointer;
 
       border: 2px solid var(--border);
       border-radius: 14px;
