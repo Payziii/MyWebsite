@@ -266,7 +266,7 @@ onUnmounted(() => {
     }
 
     .btn:hover {
-      scale: 1.1;
+      background-color: #252525;
     }
   }
 }
@@ -431,6 +431,10 @@ onUnmounted(() => {
 
       border: 2px solid var(--border);
       border-radius: 14px;
+    }
+
+    .all:hover {
+      background-color: #252525;
     }
   }
 }
