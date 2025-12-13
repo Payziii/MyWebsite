@@ -286,4 +286,42 @@ const projects = ref([
     display: block;
   }
 }
+@media (max-width: 768px) {
+  .project {
+    width: 85%;
+    padding: 20px;
+
+    .nickname {
+    gap: 20px;
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .status-icon {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  .btn-icon {
+    width: 15px;
+    height: 15px;
+  }
+  }
+}
 </style>
