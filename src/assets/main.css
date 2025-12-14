@@ -22,14 +22,13 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  padding-left: 20rem;
-  padding-right: 20rem;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   #app {
-    padding-left: 0;
-    padding-right: 0;
+    max-width: 100%;
   }
 }
