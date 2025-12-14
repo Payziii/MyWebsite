@@ -278,9 +278,11 @@ onUnmounted(() => {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 20px;
 
   .card {
     padding: 20px;
+    min-width: 400px;
     border-radius: 12px;
     border: 3px solid var(--border);
     display: grid;
@@ -350,6 +352,8 @@ onUnmounted(() => {
 .big-cards {
   display: flex;
   flex-direction: row;
+  min-width: 80%;
+  margin: 0 auto;
   gap: 5%;
 
   .skills {
@@ -528,6 +532,7 @@ onUnmounted(() => {
 
 .big-cards {
   flex-wrap: wrap;
+  width: 100%;
 
   .skills {
     border: 3px solid var(--border);
