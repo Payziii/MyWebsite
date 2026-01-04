@@ -37,7 +37,8 @@ const projects = ref([
     shadowColor: 'rgba(50, 100, 255, 0.1)',
     buttons: [
       { label: 'Сайт', url: 'https://chat.fifty.su', icon: '/logos/site.png' },
-      { label: 'RuStore', url: 'https://www.rustore.ru/catalog/app/su.fifty.chat', icon: '/logos/download.png' }
+      { label: 'RuStore', url: 'https://www.rustore.ru/catalog/app/su.fifty.chat', icon: '/logos/download.png' },
+      { label: 'Telegram', url: 'https://t.me/Fifty_Chat_Bot', icon: '/logos/tg.png' }
     ]
   },
   {
