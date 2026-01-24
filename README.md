@@ -1,5 +1,6 @@
 # Личный сайт Payziii
 
+Написан на Vue.js
+
 - Ссылка: [fifty.su](https://fifty.su)
-- Сделал дизайн: [Orzxiety](https://orzxiety.ru)
 - Автор: [Payziii](https://github.com/Payziii)
