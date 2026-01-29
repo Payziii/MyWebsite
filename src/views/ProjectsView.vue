@@ -172,6 +172,28 @@ const projects = ref([
     buttons: [
       { label: 'GitHub', url: 'https://github.com/Payziii/WeatherBot', icon: '/logos/github.png' }
     ]
+  },
+  {
+    id: 16,
+    name: 'MicroTTT',
+    avatar: '/logos/projects/MicroTTT.png',
+    description: '<span class="green">Telegram-бот</span> для игры в крестики-нолики с другими игроками или ботом.',
+    isActive: true,
+    shadowColor: 'rgba(50, 100, 255, 0.1)',
+    buttons: [
+      { label: 'Telegram', url: 'https://t.me/MicroTTTBot', icon: '/logos/tg.png' }
+    ]
+  },
+  {
+    id: 17,
+    name: 'MicroShips',
+    avatar: '/logos/projects/MicroShips.png',
+    description: '<span class="green">Telegram-бот</span> для игры в морской бой с другими игроками или ботом.',
+    isActive: true,
+    shadowColor: 'rgba(50, 100, 255, 0.1)',
+    buttons: [
+      { label: 'Telegram', url: 'https://t.me/MicroShipsBot', icon: '/logos/tg.png' }
+    ]
   }
 ])
 </script>
