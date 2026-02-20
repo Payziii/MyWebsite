@@ -6,7 +6,7 @@ export default {
   basic: {
     hello: 'Hi, I\'m ',
     description_1: 'FullStack Developer from Russia. I develop websites, Telegram and Discord bots, and other utilities.',
-    description_2: 'My name is Mikhail and I am now 17 y.o.',
+    description_2: 'My name is Mikhail and I am now 18 y.o.',
     channel: 'Channel'
   },
   subcards: {
