@@ -224,6 +224,8 @@ const projects = ref([
   margin-top: 50px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
 }
