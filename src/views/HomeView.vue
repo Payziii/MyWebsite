@@ -60,7 +60,7 @@ onMounted(() => {
 
   updateTime();
 
-  timeInterval = setInterval(updateTime, 10000);
+  timeInterval = setInterval(updateTime, 1000);
 })
 
 onUnmounted(() => {
