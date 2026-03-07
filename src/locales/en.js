@@ -21,5 +21,6 @@ export default {
   notfound: {
     general: 'Page not found',
     desc: 'You will be redirected to the home page in 5 seconds...'
-  }
+  },
+  loading: 'Loading...'
 }
