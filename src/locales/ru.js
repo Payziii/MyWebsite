@@ -11,8 +11,11 @@ export default {
   },
   subcards: {
     time: 'Локальное время UTC+5',
-    hours: 'часов',
-    coding: 'Проведено за кодингом'
+    hour_one: 'час',
+    hour_two: 'часа',
+    hour_five: 'часов',
+    coding: 'Проведено за кодингом',
+    coding_one: 'Проведен за кодингом',
   },
   scroll: 'Пролистай вниз',
   bigcards: {

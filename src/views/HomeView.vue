@@ -50,6 +50,22 @@ function getWaka() {
   })
 }
 
+function getNoun(number, one, two, five) {
+  let n = Math.abs(number);
+  n %= 100;
+  if (n >= 5 && n <= 20) {
+    return five;
+  }
+  n %= 10;
+  if (n === 1) {
+    return one;
+  }
+  if (n >= 2 && n <= 4) {
+    return two;
+  }
+  return five;
+}
+
 function goToProjects() {
   router.push('/projects')
 }
@@ -118,8 +134,8 @@ onUnmounted(() => {
     <div class="card">
       <img src="/logos/coding.png" />
       <div class="text-content">
-        <h1>{{ waka }} {{ $t('subcards.hours') }}</h1>
-        <p>{{ $t('subcards.coding') }}</p>
+        <h1>{{ waka }} {{ getNoun(waka, $t('subcards.hour_one'), $t('subcards.hour_two'), $t('subcards.hour_five')) }}</h1>
+        <p>{{ getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding')) }}</p>
       </div>
     </div>
   </div>

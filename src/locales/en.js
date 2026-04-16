@@ -11,8 +11,11 @@ export default {
   },
   subcards: {
     time: 'Local time UTC+5',
-    hours: 'hours',
-    coding: 'Spent on coding'
+    hour_one: 'hour',
+    hour_two: 'hours',
+    hour_five: 'hours',
+    coding: 'Spent on coding',
+    coding_one: 'Spent on coding'
   },
   scroll: 'Scroll down',
   bigcards: {
