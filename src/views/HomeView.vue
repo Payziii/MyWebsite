@@ -119,25 +119,26 @@ onUnmounted(() => {
   <div class="subcards">
     <div class="card">
       <img :src="currIcon" />
-      <div class="text-content">
-        <h1>{{ wea?.current?.temp_c }} °C</h1>
+      <div class="text-content" :data-tooltip="wea?.current?.condition?.text">
+        <h1>{{ wea?.current?.temp_c }}°C</h1>
         <p>{{ wea?.current?.condition?.text }}</p>
       </div>
     </div>
+    <div class="card-group">
     <div class="card">
       <img src="/logos/clock.png" />
-      <div class="text-content">
+      <div class="text-content" :data-tooltip="$t('subcards.time')">
         <h1>{{ time }}</h1>
         <p>{{ $t('subcards.time') }}</p>
       </div>
     </div>
     <div class="card">
       <img src="/logos/coding.png" />
-      <div class="text-content">
+      <div class="text-content" :data-tooltip="getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding'))">
         <h1>{{ waka }} {{ getNoun(waka, $t('subcards.hour_one'), $t('subcards.hour_two'), $t('subcards.hour_five')) }}</h1>
         <p>{{ getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding')) }}</p>
       </div>
-    </div>
+    </div></div>
   </div>
   <div class="scroll">
     <img src="/logos/scroll.png" />
@@ -206,7 +207,7 @@ onUnmounted(() => {
         <p>Falling Cube</p>
       </div>
       </div>
-      <div class="all" @click="goToProjects">
+      <div class="all" @click="goToProjects" tabindex="0">
         {{ $t('bigcards.all') }}
       </div>
     </div>
@@ -215,9 +216,10 @@ onUnmounted(() => {
 
 <style scoped>
 .basic {
+  box-sizing: border-box;
   margin-top: 100px;
-  border-radius: 24px;
-  border: 5px solid var(--border);
+  border-radius: 12px;
+  border: 3px solid var(--border);
   width: 100%;
   height: 50%;
   padding: 50px;
@@ -289,16 +291,25 @@ onUnmounted(() => {
 
 .subcards {
   display: flex;
-  width: 100%;
+  min-width: 100%;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 40px;
+
+  .card-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    flex: 1 1 auto;
+  }
 
   .card {
     padding: 20px;
-    min-width: 400px;
+    flex: 1 1 280px;
     border-radius: 12px;
     border: 3px solid var(--border);
     display: grid;
@@ -320,6 +331,7 @@ onUnmounted(() => {
       justify-content: center;
       text-align: center;
       min-width: 0;
+      position: relative;
     }
 
     .text-content h1 {
@@ -338,6 +350,23 @@ onUnmounted(() => {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .text-content[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      border: 1.5px solid var(--border);
+      color: var(--white);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
     }
   }
 }
@@ -374,8 +403,8 @@ onUnmounted(() => {
 
   .skills {
     margin-top: 50px;
-    border-radius: 24px;
-    border: 5px solid var(--border);
+    border-radius: 12px;
+    border: 3px solid var(--border);
     width: 35%;
     padding: 50px;
     margin-bottom: 50px;
@@ -410,8 +439,8 @@ onUnmounted(() => {
 
   .projects {
     margin-top: 50px;
-    border-radius: 24px;
-    border: 5px solid var(--border);
+    border-radius: 12px;
+    border: 3px solid var(--border);
     width: 35%;
     padding: 50px;
     margin-bottom: 50px;

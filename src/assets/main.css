@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
 
 :root {
   --black: #0C0A09;
@@ -12,7 +12,7 @@ body {
   color: var(--white);
   background: var(--black);
   line-height: 1.6;
-  font-family: "Zen Maru Gothic", sans-serif;
+  font-family: "Onest", sans-serif;
   font-size: 20px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
