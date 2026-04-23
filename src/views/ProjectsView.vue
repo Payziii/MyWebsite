@@ -87,6 +87,7 @@ onMounted(async () => {
       height: 20px;
       object-fit: contain;
       transform: translateY(4px);
+      transform: translateX(-10px);
     }
   }
 
@@ -137,13 +138,19 @@ onMounted(async () => {
   }
 }
 
+@media (max-width: 1000px) and (min-width: 769px) {
+  .project {
+    width: 70%;
+  }
+}
+
 @media (max-width: 768px) {
   .plist {
     margin-top: 10px;
   }
 
   .project {
-    width: 85%;
+    width: 100%;
     padding: 20px;
 
     .nickname {
