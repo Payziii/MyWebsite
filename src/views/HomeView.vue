@@ -125,20 +125,23 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="card-group">
-    <div class="card">
-      <img src="/logos/clock.png" />
-      <div class="text-content" :data-tooltip="$t('subcards.time')">
-        <h1>{{ time }}</h1>
-        <p>{{ $t('subcards.time') }}</p>
+      <div class="card">
+        <img src="/logos/clock.png" />
+        <div class="text-content" :data-tooltip="$t('subcards.time')">
+          <h1>{{ time }}</h1>
+          <p>{{ $t('subcards.time') }}</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/logos/coding.png" />
+        <div class="text-content"
+          :data-tooltip="getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding'))">
+          <h1>{{ waka }} {{ getNoun(waka, $t('subcards.hour_one'), $t('subcards.hour_two'), $t('subcards.hour_five')) }}
+          </h1>
+          <p>{{ getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding')) }}</p>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <img src="/logos/coding.png" />
-      <div class="text-content" :data-tooltip="getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding'))">
-        <h1>{{ waka }} {{ getNoun(waka, $t('subcards.hour_one'), $t('subcards.hour_two'), $t('subcards.hour_five')) }}</h1>
-        <p>{{ getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding')) }}</p>
-      </div>
-    </div></div>
   </div>
   <div class="scroll">
     <img src="/logos/scroll.png" />
@@ -179,33 +182,33 @@ onUnmounted(() => {
     <div class="projects">
       <div class="pr-list">
         <div class="project">
-        <img src="/logos/projects/payzibot.png" />
-        <p>PayziBot</p>
-      </div>
-      <div class="project">
-        <img src="/logos/projects/fiftytools.png" />
-        <p>FiftyTools</p>
-      </div>
-      <div class="project">
-        <img src="/logos/projects/pepeguess.png" />
-        <p>PepeGuess</p>
-      </div>
-      <div class="project">
-        <img src="/logos/projects/fiftychat.png" />
-        <p>FiftyChat</p>
-      </div>
-      <div class="project">
-        <img src="/logos/projects/fiftyapi.png" />
-        <p>FiftyAPI</p>
-      </div>
-      <div class="project">
-        <img src="/logos/projects/softshelf.png" />
-        <p>SoftShelf</p>
-      </div>
-      <div class="project">
-        <img src="/logos/projects/fallingcube.png" />
-        <p>Falling Cube</p>
-      </div>
+          <img src="/logos/projects/payzibot.png" />
+          <p>PayziBot</p>
+        </div>
+        <div class="project">
+          <img src="/logos/projects/fiftytools.png" />
+          <p>FiftyTools</p>
+        </div>
+        <div class="project">
+          <img src="/logos/projects/pepeguess.png" />
+          <p>PepeGuess</p>
+        </div>
+        <div class="project">
+          <img src="/logos/projects/fiftychat.png" />
+          <p>FiftyChat</p>
+        </div>
+        <div class="project">
+          <img src="/logos/projects/fiftyapi.png" />
+          <p>FiftyAPI</p>
+        </div>
+        <div class="project">
+          <img src="/logos/projects/softshelf.png" />
+          <p>SoftShelf</p>
+        </div>
+        <div class="project">
+          <img src="/logos/projects/fallingcube.png" />
+          <p>Falling Cube</p>
+        </div>
       </div>
       <div class="all" @click="goToProjects" tabindex="0">
         {{ $t('bigcards.all') }}
@@ -490,116 +493,138 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .basic {
-      margin-top: 10px;
-    width: 85%;
+    margin-top: 10px;
     padding: 20px;
-    border: 3px solid var(--border);
+    border: 1.5px solid var(--border);
     margin-bottom: 20px;
 
     .nickname {
-    gap: 20px;
+      gap: 20px;
 
-    .avatar {
-      width: 50px;
-      height: 50px;
+      .avatar {
+        width: 50px;
+        height: 50px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
     }
 
-    h1 {
-      font-size: 1.5rem;
-    }
-  }
-
-  h2 {
-    font-size: 0.9rem;
-  }
-
-  .btns {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
-
-    .btn {
-      padding-left: 6px;
-      padding-right: 6px;
-      gap: 10px;
-      border: 1px solid var(--border);
-    }
-
-    .btn img {
-      width: 1rem;
-      height: 1rem;
-    }
-
-    .btn p {
-      line-height: 0;
+    h2 {
       font-size: 0.9rem;
     }
-  }
+
+    .btns {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      .btn {
+        padding-left: 6px;
+        padding-right: 6px;
+        gap: 10px;
+        border: 1px solid var(--border);
+      }
+
+      .btn img {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .btn p {
+        line-height: 0;
+        font-size: 0.9rem;
+      }
+    }
   }
 
   .subcards {
     gap: 12px;
 
-  .card {
-    min-width: 92%;
-    padding: 10px;
-    border: 1.5px solid var(--border);
-    gap: 5px 15px;
+    .card-group {
+      gap: 12px;
+    }
+
+    .card {
+      min-width: 92%;
+      padding: 10px;
+      border: 1.5px solid var(--border);
+      gap: 5px 15px;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .text-content h1 {
+        font-size: 1.5rem;
+      }
+
+      .text-content p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .scroll {
+    margin-top: 40px;
 
     img {
-      width: 50px;
-      height: 50px;
+      width: 1.8rem;
+      height: 1.8rem;
     }
-
-    .text-content h1 {
-      font-size: 1.5rem;
-    }
-
-    .text-content p {
-      font-size: 0.9rem;
-    }
-  }
-}
-
-.scroll {
-  margin-top: 40px;
-
-  img {
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-}
-
-.big-cards {
-  flex-wrap: wrap;
-  width: 100%;
-
-  .skills {
-    border: 3px solid var(--border);
-    width: 85%;
-    padding: 20px;
-    margin-bottom: 0px;
 
     p {
       font-size: 1rem;
     }
   }
 
-  .projects {
-    border: 3px solid var(--border);
-    width: 85%;
-    padding: 20px;
-    margin-bottom: 0px;
+  .big-cards {
+    flex-wrap: wrap;
+    width: 100%;
 
-    .all {
-      border: 1px solid var(--border);
+    .skills {
+      border: 1.5px solid var(--border);
+      width: 100%;
+      padding: 20px;
+      margin-bottom: 0px;
+
+      p {
+        font-size: 1rem;
+      }
+
+      .block .images img:hover {
+        scale: 1;
+      }
+    }
+
+    .projects {
+      border: 1.5px solid var(--border);
+      width: 100%;
+      padding: 20px;
+      margin-bottom: 0px;
+
+      .all {
+        border: 1px solid var(--border);
+      }
+
+      .project:hover {
+        scale: 1;
+      }
+
+      .pr-list {
+        .project img {
+          width: 70px;
+          height: 70px;
+        }
+
+        .project p {
+          font-size: 0.8rem;
+        }
+      }
     }
   }
-}
 }
 </style>
