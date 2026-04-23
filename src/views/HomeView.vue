@@ -261,6 +261,7 @@ onUnmounted(() => {
   .btns {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 24px;
 
     .btn {
@@ -487,6 +488,21 @@ onUnmounted(() => {
 
     .all:hover {
       background-color: #252525;
+    }
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 769px) {
+  .big-cards {
+    flex-wrap: wrap;
+    width: 100%;
+
+    .skills {
+      width: 100%;
+    }
+
+    .projects {
+      width: 100%;
     }
   }
 }
