@@ -210,7 +210,7 @@ onUnmounted(() => {
           <p>Falling Cube</p>
         </div>
       </div>
-      <div class="all" @click="goToProjects" tabindex="0">
+      <div class="all" @click="goToProjects" @keydown.enter="goToProjects" tabindex="0">
         {{ $t('bigcards.all') }}
       </div>
     </div>
