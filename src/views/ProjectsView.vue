@@ -1,32 +1,53 @@
 <!-- ala lukin e ni. -->
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const projects = ref([])
-const { locale } = useI18n();
+const { locale } = useI18n()
 
 onMounted(async () => {
   try {
-    const response = await fetch(`https://api.fifty.su/projects?lang=${locale.value}`);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    projects.value = data;
+    const response = await fetch(`https://api.fifty.su/projects?lang=${locale.value}`)
+    if (!response.ok) throw new Error('Network response was not ok')
+    const data = await response.json()
+    projects.value = data
+
+    await nextTick()
+    initObserver()
   } catch (error) {
-    console.error('Error fetching projects:', error);
+    console.error('Error fetching projects:', error)
   }
-});
+})
+
+function initObserver() {
+  const cards = document.querySelectorAll('.project')
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  cards.forEach((card) => observer.observe(card))
+}
 </script>
 
 <template>
+
   <head>
     <title>{{ $t('title.projects') }} — Payziii</title>
   </head>
 
   <div class="plist">
-    <div v-for="project in projects" :key="project.id" class="project">
+    <div v-for="(project, index) in projects" :key="project.id" class="project"
+      :data-side="index % 2 === 0 ? 'left' : 'right'">
       <div class="nickname">
         <img :src="project.avatar" class="avatar" :style="{ '--shadow-color': project.shadowColor }" />
         <h1>{{ project.name }}</h1>
@@ -66,6 +87,8 @@ onMounted(async () => {
   padding: 30px;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 
   .nickname {
     display: flex;
@@ -140,6 +163,19 @@ onMounted(async () => {
     height: 20px;
     display: block;
   }
+}
+
+.project[data-side='left'] {
+  transform: translateX(-120px);
+}
+
+.project[data-side='right'] {
+  transform: translateX(120px);
+}
+
+.project.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @media (max-width: 1000px) and (min-width: 769px) {
