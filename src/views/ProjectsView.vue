@@ -21,6 +21,10 @@ onMounted(async () => {
 </script>
 
 <template>
+  <head>
+    <title>{{ $t('title.projects') }} — Payziii</title>
+  </head>
+
   <div class="plist">
     <div v-for="project in projects" :key="project.id" class="project">
       <div class="nickname">
