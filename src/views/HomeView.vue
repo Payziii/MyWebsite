@@ -1,69 +1,87 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import api from '../functions/api.js'
 
 const router = useRouter()
 
-const wea = ref({})
-const currIcon = ref('https://api.fifty.su/weatherIcons/cloud-snow.svg')
-const time = ref('23:18')
-const waka = ref('150')
-const { locale } = useI18n()
-let timeInterval;
+const wea = ref(null)
+const currIcon = ref(null)
+const time = ref('--:--')
+const waka = ref(null)
+const weatherLoading = ref(true)
+const weatherError = ref(false)
+const wakaLoading = ref(true)
+const wakaError = ref(false)
+const { t, locale } = useI18n()
+
+let timeInterval
+let timeTimeout
+
+watch(locale, () => {
+  document.title = `${t('title.home')} — Payziii`
+  getWeather('Екатеринбург')
+}, { immediate: true })
 
 function getCurrentTimeUTC5() {
-  const now = new Date();
-
-  const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
-  const utc5Time = new Date(utcTime + (5 * 3600000));
-
-  const hours = String(utc5Time.getHours()).padStart(2, '0');
-  const minutes = String(utc5Time.getMinutes()).padStart(2, '0');
-
-  return `${hours}:${minutes}`;
+  const now = new Date()
+  const utc5Time = new Date(now.getTime() + (now.getTimezoneOffset() + 300) * 60000)
+  const hours = String(utc5Time.getHours()).padStart(2, '0')
+  const minutes = String(utc5Time.getMinutes()).padStart(2, '0')
+  return `${hours}:${minutes}`
 }
 
 function updateTime() {
-  time.value = getCurrentTimeUTC5();
+  time.value = getCurrentTimeUTC5()
 }
 
-function getWeather(city) {
-  api.forecast(city, locale.value).then((data) => {
+function scheduleTimeUpdate() {
+  updateTime()
+  const now = new Date()
+  const msUntilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds()
+  timeTimeout = setTimeout(() => {
+    updateTime()
+    timeInterval = setInterval(updateTime, 60000)
+  }, msUntilNextMinute)
+}
+
+async function getWeather(city) {
+  weatherLoading.value = true
+  weatherError.value = false
+  try {
+    const data = await api.forecast(city, locale.value)
     wea.value = data
-
-    api.icon(data.current.condition.code, data.current.is_day).then((icon) => {
-      currIcon.value = "https://api.fifty.su/weatherIcons/" + icon.icon
-      console.log(currIcon.value)
-    })
-
-    return data
-  })
+    const icon = await api.icon(data.current.condition.code, data.current.is_day)
+    currIcon.value = 'https://api.fifty.su/weatherIcons/' + icon.icon
+  } catch {
+    weatherError.value = true
+  } finally {
+    weatherLoading.value = false
+  }
 }
 
-function getWaka() {
-  api.waka().then((data) => {
+async function getWaka() {
+  wakaLoading.value = true
+  wakaError.value = false
+  try {
+    const data = await api.waka()
     waka.value = data.hours
-
-    return data
-  })
+  } catch {
+    wakaError.value = true
+  } finally {
+    wakaLoading.value = false
+  }
 }
 
 function getNoun(number, one, two, five) {
-  let n = Math.abs(number);
-  n %= 100;
-  if (n >= 5 && n <= 20) {
-    return five;
-  }
-  n %= 10;
-  if (n === 1) {
-    return one;
-  }
-  if (n >= 2 && n <= 4) {
-    return two;
-  }
-  return five;
+  let n = Math.abs(number)
+  n %= 100
+  if (n >= 5 && n <= 20) return five
+  n %= 10
+  if (n === 1) return one
+  if (n >= 2 && n <= 4) return two
+  return five
 }
 
 function goToProjects() {
@@ -71,142 +89,168 @@ function goToProjects() {
 }
 
 onMounted(() => {
-  getWeather('Екатеринбург');
-  getWaka();
-
-  updateTime();
-
-  timeInterval = setInterval(updateTime, 1000);
+  getWaka()
+  scheduleTimeUpdate()
 })
 
 onUnmounted(() => {
-  if (timeInterval) {
-    clearInterval(timeInterval);
-  }
+  clearTimeout(timeTimeout)
+  clearInterval(timeInterval)
 })
 </script>
 
 <template>
-
-  <head>
-    <title>{{ $t('title.home') }} — Payziii</title>
-  </head>
   <div class="basic">
     <div class="nickname">
-      <img src="/payziii.jpg" class="avatar" />
+      <img src="/payziii.jpg" class="avatar" alt="Payziii avatar" />
       <h1>{{ $t('basic.hello') }} <span class="payziii">Payziii</span></h1>
     </div>
     <h2>{{ $t('basic.description_1') }}<br />{{ $t('basic.description_2') }}</h2>
     <div class="btns">
       <a class="btn" href="https://github.com/Payziii" target="_blank">
-        <img src="/logos/github.png" />
+        <img src="/logos/github.png" alt="GitHub" />
         <p>GitHub</p>
       </a>
       <a class="btn" href="https://wakatime.com/@Payziii" target="_blank">
-        <img src="/logos/wakatime.png" />
+        <img src="/logos/wakatime.png" alt="WakaTime" />
         <p>WakaTime</p>
       </a>
       <a class="btn" href="https://t.me/Payziii" target="_blank">
-        <img src="/logos/tg.png" />
+        <img src="/logos/tg.png" alt="Telegram" />
         <p>Telegram</p>
       </a>
       <a class="btn" href="https://t.me/Payzick" target="_blank">
-        <img src="/logos/tg.png" />
+        <img src="/logos/tg.png" alt="Telegram channel" />
         <p>{{ $t('basic.channel') }}</p>
       </a>
     </div>
   </div>
+
   <div class="subcards">
-    <div class="card">
-      <img :src="currIcon" />
+    <!-- Weather card -->
+    <div class="card" v-if="weatherLoading">
+      <div class="skeleton sk-icon"></div>
+      <div class="text-content">
+        <div class="skeleton sk-h1"></div>
+        <div class="skeleton sk-p"></div>
+      </div>
+    </div>
+    <div class="card card--error" v-else-if="weatherError">
+      <img src="/logos/skills/vue.png" style="opacity:0.3;" alt="" />
+      <div class="text-content">
+        <h1>—°C</h1>
+        <p>{{ $t('error') }}</p>
+      </div>
+    </div>
+    <div class="card" v-else>
+      <img :src="currIcon" alt="weather icon" />
       <div class="text-content" :data-tooltip="wea?.current?.condition?.text">
         <h1>{{ wea?.current?.temp_c }}°C</h1>
         <p>{{ wea?.current?.condition?.text }}</p>
       </div>
     </div>
+
     <div class="card-group">
+      <!-- Clock card (no loading state — computed locally) -->
       <div class="card">
-        <img src="/logos/clock.png" />
+        <img src="/logos/clock.png" alt="clock" />
         <div class="text-content" :data-tooltip="$t('subcards.time')">
           <h1>{{ time }}</h1>
           <p>{{ $t('subcards.time') }}</p>
         </div>
       </div>
-      <div class="card">
-        <img src="/logos/coding.png" />
+
+      <!-- Coding hours card -->
+      <div class="card" v-if="wakaLoading">
+        <div class="skeleton sk-icon"></div>
+        <div class="text-content">
+          <div class="skeleton sk-h1"></div>
+          <div class="skeleton sk-p"></div>
+        </div>
+      </div>
+      <div class="card card--error" v-else-if="wakaError">
+        <img src="/logos/coding.png" alt="coding" style="opacity:0.3;" />
+        <div class="text-content">
+          <h1>—</h1>
+          <p>{{ $t('error') }}</p>
+        </div>
+      </div>
+      <div class="card" v-else>
+        <img src="/logos/coding.png" alt="coding hours" />
         <div class="text-content"
           :data-tooltip="getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding'))">
-          <h1>{{ waka }} {{ getNoun(waka, $t('subcards.hour_one'), $t('subcards.hour_two'), $t('subcards.hour_five')) }}
-          </h1>
+          <h1>{{ waka }} {{ getNoun(waka, $t('subcards.hour_one'), $t('subcards.hour_two'), $t('subcards.hour_five')) }}</h1>
           <p>{{ getNoun(waka, $t('subcards.coding_one'), $t('subcards.coding'), $t('subcards.coding')) }}</p>
         </div>
       </div>
     </div>
   </div>
+
   <div class="scroll">
-    <img src="/logos/scroll.png" />
+    <img src="/logos/scroll.png" alt="" />
     <p>{{ $t('scroll') }}</p>
   </div>
+
   <div class="big-cards">
     <div class="skills">
       <div class="block">
         <p>Frontend</p>
         <div class="images">
-          <img src="/logos/skills/vue.png" />
-          <img src="/logos/skills/js.png" />
-          <img src="/logos/skills/html.png" />
-          <img src="/logos/skills/css.png" />
-          <img src="/logos/skills/vite.png" />
+          <img src="/logos/skills/vue.png" alt="Vue" />
+          <img src="/logos/skills/js.png" alt="JavaScript" />
+          <img src="/logos/skills/html.png" alt="HTML" />
+          <img src="/logos/skills/css.png" alt="CSS" />
+          <img src="/logos/skills/vite.png" alt="Vite" />
         </div>
       </div>
       <div class="block">
         <p>Backend</p>
         <div class="images">
-          <img src="/logos/skills/node.png" />
-          <img src="/logos/skills/nginx.png" />
-          <img src="/logos/skills/cs.png" />
-          <img src="/logos/skills/cpp.png" />
-          <img src="/logos/skills/express.png" />
+          <img src="/logos/skills/node.png" alt="Node.js" />
+          <img src="/logos/skills/nginx.png" alt="Nginx" />
+          <img src="/logos/skills/cs.png" alt="C#" />
+          <img src="/logos/skills/cpp.png" alt="C++" />
+          <img src="/logos/skills/express.png" alt="Express" />
         </div>
       </div>
       <div class="block">
         <p>Other</p>
         <div class="images">
-          <img src="/logos/skills/python.png" />
-          <img src="/logos/skills/mongo.png" />
-          <img src="/logos/skills/mysql.png" />
-          <img src="/logos/skills/djs.png" />
+          <img src="/logos/skills/python.png" alt="Python" />
+          <img src="/logos/skills/mongo.png" alt="MongoDB" />
+          <img src="/logos/skills/mysql.png" alt="MySQL" />
+          <img src="/logos/skills/djs.png" alt="Discord.js" />
         </div>
       </div>
     </div>
     <div class="projects">
       <div class="pr-list">
         <div class="project">
-          <img src="/logos/projects/payzibot.png" />
+          <img src="/logos/projects/payzibot.png" alt="PayziBot" />
           <p>PayziBot</p>
         </div>
         <div class="project">
-          <img src="/logos/projects/fiftytools.png" />
+          <img src="/logos/projects/fiftytools.png" alt="FiftyTools" />
           <p>FiftyTools</p>
         </div>
         <div class="project">
-          <img src="/logos/projects/pepeguess.png" />
+          <img src="/logos/projects/pepeguess.png" alt="PepeGuess" />
           <p>PepeGuess</p>
         </div>
         <div class="project">
-          <img src="/logos/projects/fiftychat.png" />
+          <img src="/logos/projects/fiftychat.png" alt="FiftyChat" />
           <p>FiftyChat</p>
         </div>
         <div class="project">
-          <img src="/logos/projects/fiftyapi.png" />
+          <img src="/logos/projects/fiftyapi.png" alt="FiftyAPI" />
           <p>FiftyAPI</p>
         </div>
         <div class="project">
-          <img src="/logos/projects/softshelf.png" />
+          <img src="/logos/projects/softshelf.png" alt="SoftShelf" />
           <p>SoftShelf</p>
         </div>
         <div class="project">
-          <img src="/logos/projects/fallingcube.png" />
+          <img src="/logos/projects/fallingcube.png" alt="Falling Cube" />
           <p>Falling Cube</p>
         </div>
       </div>
@@ -372,6 +416,29 @@ onUnmounted(() => {
       pointer-events: none;
       z-index: 10;
     }
+
+    /* Skeleton shapes inside cards */
+    .sk-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .sk-h1 {
+      width: 90px;
+      height: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .sk-p {
+      width: 140px;
+      height: 1.2rem;
+    }
+  }
+
+  .card--error img {
+    opacity: 0.3;
   }
 }
 
@@ -580,6 +647,22 @@ onUnmounted(() => {
 
       .text-content p {
         font-size: 0.9rem;
+      }
+
+      .sk-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .sk-h1 {
+        width: 60px;
+        height: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .sk-p {
+        width: 100px;
+        height: 0.9rem;
       }
     }
   }

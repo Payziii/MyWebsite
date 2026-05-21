@@ -1,10 +1,16 @@
 <!-- ala lukin e ni. -->
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, watch, onMounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const projects = ref([])
-const { locale } = useI18n()
+const loading = ref(true)
+const plistRef = ref(null)
+const { t, locale } = useI18n()
+
+watch(locale, () => {
+  document.title = `${t('title.projects')} — Payziii`
+}, { immediate: true })
 
 onMounted(async () => {
   try {
@@ -12,16 +18,18 @@ onMounted(async () => {
     if (!response.ok) throw new Error('Network response was not ok')
     const data = await response.json()
     projects.value = data
+    loading.value = false
 
     await nextTick()
     initObserver()
   } catch (error) {
     console.error('Error fetching projects:', error)
+    loading.value = false
   }
 })
 
 function initObserver() {
-  const cards = document.querySelectorAll('.project')
+  const cards = plistRef.value.querySelectorAll('.project')
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -40,32 +48,44 @@ function initObserver() {
 </script>
 
 <template>
+  <div class="plist" ref="plistRef">
+    <template v-if="loading">
+      <div class="project skeleton-card" v-for="n in 6" :key="n">
+        <div class="nickname">
+          <div class="skeleton sk-avatar"></div>
+          <div class="skeleton sk-title"></div>
+        </div>
+        <div class="skeleton sk-desc-line" v-for="l in 3" :key="l"></div>
+        <div class="buttons-container">
+          <div class="skeleton sk-btn"></div>
+          <div class="skeleton sk-btn"></div>
+        </div>
+      </div>
+    </template>
 
-  <head>
-    <title>{{ $t('title.projects') }} — Payziii</title>
-  </head>
+    <template v-else>
+      <div v-for="(project, index) in projects" :key="project.id" class="project"
+        :data-side="index % 2 === 0 ? 'left' : 'right'">
+        <div class="nickname">
+          <img :src="project.avatar" class="avatar" :style="{ '--shadow-color': project.shadowColor }" :alt="project.name" />
+          <h1>{{ project.name }}</h1>
+          <img :src="project.isActive ? '/code.png' : '/nocode.png'" class="status-icon" alt="status" />
+        </div>
 
-  <div class="plist">
-    <div v-for="(project, index) in projects" :key="project.id" class="project"
-      :data-side="index % 2 === 0 ? 'left' : 'right'">
-      <div class="nickname">
-        <img :src="project.avatar" class="avatar" :style="{ '--shadow-color': project.shadowColor }" />
-        <h1>{{ project.name }}</h1>
-        <img :src="project.isActive ? '/code.png' : '/nocode.png'" class="status-icon" alt="status" />
+        <h2 class="description" v-html="project.description"></h2>
+
+        <div class="buttons-container">
+          <a v-for="(btn, index) in project.buttons" :key="index" :href="btn.url" class="btn" target="_blank">
+            <img v-if="btn.icon" :src="btn.icon" class="btn-icon" alt="" />
+            {{ btn.label }}
+          </a>
+        </div>
       </div>
 
-      <h2 class="description" v-html="project.description"></h2>
-
-      <div class="buttons-container">
-        <a v-for="(btn, index) in project.buttons" :key="index" :href="btn.url" class="btn" target="_blank">
-          <img v-if="btn.icon" :src="btn.icon" class="btn-icon" alt="" />
-          {{ btn.label }}
-        </a>
+      <div v-show="projects.length === 0">
+        {{ $t('loading') }}
       </div>
-    </div>
-    <div v-show="projects.length == 0">
-      {{ $t('loading') }}
-    </div>
+    </template>
   </div>
 </template>
 
@@ -113,8 +133,7 @@ function initObserver() {
       width: 20px;
       height: 20px;
       object-fit: contain;
-      transform: translateY(4px);
-      transform: translateX(-10px);
+      transform: translateX(-10px) translateY(4px);
     }
   }
 
@@ -162,6 +181,40 @@ function initObserver() {
     width: 20px;
     height: 20px;
     display: block;
+  }
+}
+
+.skeleton-card {
+  opacity: 1;
+
+  .sk-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .sk-title {
+    width: 140px;
+    height: 2rem;
+    border-radius: 6px;
+  }
+
+  .sk-desc-line {
+    width: 100%;
+    height: 1rem;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .sk-desc-line:last-of-type {
+    width: 65%;
+  }
+
+  .sk-btn {
+    width: 90px;
+    height: 36px;
+    border-radius: 8px;
   }
 }
 
