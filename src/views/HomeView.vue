@@ -32,6 +32,21 @@ function getCurrentTimeUTC5() {
   return `${hours}:${minutes}`
 }
 
+function getFullYearsPassed(startDate) {
+  const today = new Date();
+  
+  let years = today.getFullYear() - startDate.getFullYear();
+  
+  const monthDiff = today.getMonth() - startDate.getMonth();
+  const dayDiff = today.getDate() - startDate.getDate();
+  
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    years--;
+  }
+  
+  return years;
+}
+
 function updateTime() {
   time.value = getCurrentTimeUTC5()
 }
@@ -105,7 +120,7 @@ onUnmounted(() => {
       <img src="/payziii.jpg" class="avatar" alt="Payziii avatar" />
       <h1>{{ $t('basic.hello') }} <span class="payziii">Payziii</span></h1>
     </div>
-    <h2>{{ $t('basic.description_1') }}<br />{{ $t('basic.description_2') }}</h2>
+    <h2>{{ $t('basic.description_1') }}<br />{{ $t('basic.description_2', { age: getFullYearsPassed(new Date(2008, 0, 29)) }) }}</h2>
     <div class="btns">
       <a class="btn" href="https://github.com/Payziii" target="_blank">
         <img src="/logos/github.png" alt="GitHub" />
