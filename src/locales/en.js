@@ -25,6 +25,6 @@ export default {
     general: 'Page not found',
     desc: 'You will be redirected to the home page in 5 seconds...'
   },
-  loading: 'Loading...',
+  notloaded: 'Projects not found...',
   error: 'Failed to load'
 }

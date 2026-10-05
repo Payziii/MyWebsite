@@ -83,7 +83,7 @@ function initObserver() {
       </div>
 
       <div v-show="projects.length === 0">
-        {{ $t('loading') }}
+        {{ $t('notloaded') }}
       </div>
     </template>
   </div>
